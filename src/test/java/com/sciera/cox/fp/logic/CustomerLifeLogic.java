@@ -19,19 +19,19 @@ public class CustomerLifeLogic extends BaseSparkTest {
     @Test
     public void testLogic() {
         CustomerLife one = new CustomerLife();
-        one.setCloseDate("2021-08-06");
+        one.setCloseDate("20210806");
 
         CustomerLife two = new CustomerLife();
-        two.setCloseDate(null);
+        two.setCloseDate("20190806");
 
         List<CustomerLife> customers = Arrays.asList(one,two);
         Dataset<CustomerLife> customerDS = toDataFrame(customers, CustomerLife.class);
 
         assert(customerDS.count() == 2);
 
-        Dataset<CustomerLife> filtered = new CustomerLifeFilter("","").filterOut(customerDS);
+        Dataset<CustomerLife> filtered = new CustomerLifeFilter("20200101","20210101").filterOut(customerDS);
 
-        Assert.assertEquals(filtered.count() ,2);
+        Assert.assertEquals(2,filtered.count());
 
     }
 }
