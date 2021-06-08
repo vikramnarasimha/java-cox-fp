@@ -8,6 +8,8 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.junit.Assert;
 import org.junit.Test;
+import static org.apache.spark.sql.functions.not;
+import static org.apache.spark.sql.functions.col;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +29,7 @@ public class CustomerLifeLogic extends BaseSparkTest {
 
         assert(customerDS.count() == 2);
 
-        Dataset<CustomerLife> filtered = new CustomerLifeFilter().filterOut(customerDS);
+        Dataset<CustomerLife> filtered = new CustomerLifeFilter("","").filterOut(customerDS);
 
         Assert.assertEquals(filtered.count() ,2);
 

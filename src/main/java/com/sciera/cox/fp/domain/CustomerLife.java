@@ -3,6 +3,8 @@ package com.sciera.cox.fp.domain;
 public class CustomerLife {
     String customerAccountKey;
     String fpKey;
+    String closeDate;
+    String disconnectFLDate;
 
     public String getCustomerAccountKey() {
         return customerAccountKey;
@@ -36,8 +38,6 @@ public class CustomerLife {
         this.disconnectFLDate = disconnectFLDate;
     }
 
-    String closeDate;
-    String disconnectFLDate;
 
     //get rows that are not in the filter clause ...
 }
